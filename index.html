@@ -1,182 +1,170 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Алина Фетисова | Фотограф</title>
     <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Шрифты с отличной поддержкой кириллицы -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #eaeaea;
+            --bg-color: #0f0f0f;
+            --bg-color-alt: #161616;
+            --text-color: #f0f0f0;
         }
 
-        /* Сложный фон с градиентом */
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: radial-gradient(circle at 50% 10%, #222222 0%, #050505 100%);
-            background-attachment: fixed;
+            background-color: var(--bg-color);
             color: var(--text-color);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         .serif { font-family: 'Cormorant Garamond', serif; }
 
-        /* Кастомный тонкий скроллбар */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        /* Скроллбар */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #333; }
 
-        /* Текстура пленочного зерна (Noise) */
-        .film-grain {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.04;
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-        }
-
-        /* --- АНИМАЦИИ --- */
-        .reveal-up {
+        /* Анимация появления */
+        .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
         }
-        .reveal-up.in-view {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Эффект плавного появления фото */
-        .img-wrap {
+        /* Эффект наведения на фото */
+        .photo-card {
             overflow: hidden;
             position: relative;
-            background: #111;
         }
-        .img-wrap img {
-            transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1s ease;
-            filter: brightness(0.9);
+        .photo-card img {
+            transition: transform 0.6s ease, filter 0.4s ease;
+            will-change: transform;
         }
-        .img-wrap:hover img {
-            transform: scale(1.03); /* Очень легкое увеличение */
-            filter: brightness(1.05);
+        .photo-card:hover img {
+            transform: scale(1.02);
+            filter: brightness(1.1);
         }
     </style>
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
 
-    <!-- Пленочное зерно поверх всего сайта -->
-    <div class="film-grain"></div>
-
-    <!-- Навигация -->
-    <nav class="fixed w-full z-50 px-6 md:px-12 py-8 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent backdrop-blur-sm">
-        <div class="text-xs md:text-sm tracking-[0.15em] uppercase font-light">А. Фетисова</div>
-        <div class="space-x-8 md:space-x-12 text-xs tracking-[0.15em] uppercase font-light hidden md:block">
-            <a href="#about" class="hover:text-gray-300 transition duration-300">Обо мне</a>
-            <a href="#portfolio" class="hover:text-gray-300 transition duration-300">Портфолио</a>
-            <a href="#contact" class="hover:text-gray-300 transition duration-300">Контакты</a>
+    <!-- Компактная навигация -->
+    <nav class="w-full px-6 py-6 border-b border-gray-800 bg-black/50 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-sm tracking-widest uppercase font-light">Алина Фетисова</div>
+            <div class="space-x-8 text-xs tracking-widest uppercase font-light hidden md:block">
+                <a href="#about" class="hover:text-gray-400 transition">Обо мне</a>
+                <a href="#portfolio" class="hover:text-gray-400 transition">Портфолио</a>
+                <a href="#contact" class="hover:text-gray-400 transition">Контакты</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Главный экран -->
-    <section class="relative w-full h-screen flex flex-col items-center justify-center px-4 pt-16">
-        <div class="text-center reveal-up">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl serif font-light mb-4">Алина Фетисова</h1>
-            <p class="text-xs md:text-sm tracking-[0.3em] uppercase text-gray-400 font-light">Фотограф</p>
+    <!-- Главный блок (сокращенный) -->
+    <section class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
+        <!-- Текст -->
+        <div class="w-full md:w-1/2 text-center md:text-left reveal">
+            <h1 class="text-5xl md:text-7xl serif font-light mb-4">Фотограф</h1>
+            <p class="text-gray-400 text-sm md:text-base font-light mb-8 max-w-md mx-auto md:mx-0">
+                Создаю эстетику из простых моментов. Игра света и тени, искренние эмоции и внимание к деталям.
+            </p>
+            <a href="#portfolio" class="inline-block border border-gray-600 px-8 py-3 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition duration-300">Смотреть работы</a>
         </div>
         
-        <!-- Главное фото (размер уменьшен, чтобы влезло на экран) -->
-        <div class="mt-12 w-full max-w-[280px] md:max-w-[360px] aspect-[3/4] reveal-up shadow-2xl img-wrap" style="transition-delay: 0.2s;">
-            <img src="IMG_2400.JPG" alt="Алина Фетисова" class="w-full h-full object-cover">
+        <!-- Главное фото -->
+        <div class="w-full md:w-1/2 flex justify-center md:justify-end reveal" style="transition-delay: 0.1s;">
+            <div class="w-full max-w-[400px] aspect-[4/5] photo-card">
+                <img src="IMG_2400.JPG" alt="Алина Фетисова" class="w-full h-full object-cover">
+            </div>
         </div>
     </section>
 
-    <!-- Обо мне -->
-    <section id="about" class="py-32 px-6 max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-5xl serif mb-12 reveal-up font-light leading-snug">
-            В поисках <span class="italic text-gray-400">естественной</span> красоты
-        </h2>
-        <div class="space-y-6 text-sm md:text-base font-light text-gray-300 tracking-wide leading-relaxed reveal-up" style="transition-delay: 0.1s;">
-            <p>
-                Я создаю эстетику из простых моментов. Игра света и тени, искренние эмоции и внимание к деталям — это основа моего подхода к фотографии. 
-            </p>
-            <p>
-                Каждая съемка для меня — это отдельная история. В моих кадрах нет суеты. Только вы, ваша индивидуальность и классика, которую захочется пересматривать годами.
+    <!-- Обо мне (на сером фоне для визуального разделения) -->
+    <section id="about" class="bg-[var(--bg-color-alt)] py-20 px-6 mt-10 border-y border-gray-800">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl md:text-4xl serif mb-6 font-light">О моем подходе</h2>
+            <p class="text-gray-400 font-light text-sm md:text-base max-w-2xl mx-auto">
+                Каждая съемка — это история. В моих кадрах нет суеты, только естественность и классика. Я помогаю людям раскрыться перед камерой, чтобы получить живые и стильные фотографии, которые захочется сохранить навсегда.
             </p>
         </div>
     </section>
 
-    <!-- Портфолио -->
-    <section id="portfolio" class="py-20 px-4 md:px-12 max-w-7xl mx-auto">
-        <div class="text-center mb-24 reveal-up">
-            <h3 class="text-xs tracking-[0.3em] uppercase font-light text-gray-400 mb-4">Избранные работы</h3>
-            <div class="h-[1px] w-12 bg-gray-600 mx-auto"></div>
-        </div>
-
-        <!-- Галерея (Фото уменьшены до 75vh, чтобы помещаться на экране) -->
-        <div class="flex flex-col gap-24 md:gap-32">
+    <!-- Галерея (Плотная сетка в 2 колонки) -->
+    <section id="portfolio" class="max-w-7xl mx-auto px-6 py-20">
+        <h2 class="text-3xl md:text-4xl serif mb-12 text-center font-light reveal">Избранное</h2>
+        
+        <!-- Сетка Masonry-стиля (2 колонки на ПК, 1 на мобильных) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             
-            <!-- Работа 1 -->
-            <div class="flex justify-center md:justify-start w-full reveal-up">
-                <div class="w-full md:w-[60%] img-wrap shadow-xl">
-                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/WHnOmEqGxfRYmMOcRhNvq.jpg" alt="Моя работа 1" class="w-full h-[65vh] md:h-[75vh] object-cover">
+            <!-- Левая колонка -->
+            <div class="flex flex-col gap-6 md:gap-10">
+                <!-- Работа 1 -->
+                <div class="w-full photo-card reveal">
+                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/WHnOmEqGxfRYmMOcRhNvq.jpg" alt="Работа 1" class="w-full h-auto object-cover">
+                </div>
+                
+                <!-- Работа 3 -->
+                <div class="w-full photo-card reveal">
+                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/Hw61JH8oNwUBEUBt4JL5V.jpg" alt="Работа 3" class="w-full h-auto object-cover">
                 </div>
             </div>
 
-            <!-- Работа 2 -->
-            <div class="flex justify-center md:justify-end w-full reveal-up">
-                <div class="w-full md:w-[50%] img-wrap shadow-xl">
-                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/cbAZD00mb_WcTAEMlQsDm.jpg" alt="Моя работа 2" class="w-full h-[65vh] md:h-[75vh] object-cover">
+            <!-- Правая колонка (сдвинута немного вниз для динамики) -->
+            <div class="flex flex-col gap-6 md:gap-10 md:mt-20">
+                <!-- Работа 2 -->
+                <div class="w-full photo-card reveal">
+                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/cbAZD00mb_WcTAEMlQsDm.jpg" alt="Работа 2" class="w-full h-auto object-cover">
+                </div>
+                
+                <!-- Место для 4-й работы. Пока тут заглушка, чтобы сетка была ровной -->
+                <div class="w-full photo-card reveal bg-gray-900 aspect-[3/4] flex items-center justify-center">
+                    <span class="text-gray-700 text-sm tracking-widest uppercase">Здесь будет фото</span>
                 </div>
             </div>
 
-            <!-- Работа 3 -->
-            <div class="flex justify-center w-full reveal-up">
-                <div class="w-full md:w-[80%] img-wrap shadow-xl">
-                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/Hw61JH8oNwUBEUBt4JL5V.jpg" alt="Моя работа 3" class="w-full h-[50vh] md:h-[70vh] object-cover object-top">
-                </div>
-            </div>
-            
         </div>
     </section>
 
     <!-- Подвал (Контакты) -->
-    <footer id="contact" class="pt-32 pb-12 px-6 text-center border-t border-gray-900 mt-10">
-        <h2 class="text-4xl md:text-6xl serif mb-12 font-light reveal-up">Связаться со мной</h2>
-        <div class="flex justify-center gap-10 md:gap-16 reveal-up" style="transition-delay: 0.1s;">
-            <a href="#" class="text-xs md:text-sm tracking-[0.15em] uppercase text-gray-400 hover:text-white transition duration-300">Telegram</a>
-            <a href="#" class="text-xs md:text-sm tracking-[0.15em] uppercase text-gray-400 hover:text-white transition duration-300">Instagram</a>
+    <footer id="contact" class="bg-[var(--bg-color-alt)] py-16 px-6 text-center border-t border-gray-800">
+        <h2 class="text-3xl md:text-4xl serif mb-8 font-light reveal">Связаться со мной</h2>
+        <div class="flex justify-center gap-8 reveal">
+            <a href="#" class="text-sm tracking-widest uppercase text-gray-400 hover:text-white transition pb-1 border-b border-transparent hover:border-white">Telegram</a>
+            <a href="#" class="text-sm tracking-widest uppercase text-gray-400 hover:text-white transition pb-1 border-b border-transparent hover:border-white">Instagram</a>
         </div>
-        <p class="text-[0.6rem] md:text-xs tracking-[0.2em] uppercase text-gray-600 mt-24">© 2026 Алина Фетисова</p>
+        <p class="text-xs tracking-widest uppercase text-gray-600 mt-16">© 2026 Алина Фетисова</p>
     </footer>
 
-    <!-- Скрипт для плавного появления при скролле -->
+    <!-- Скрипт -->
     <script>
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.15
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
+                    entry.target.classList.add('active');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal-up').forEach(el => {
+        document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
-            // Если элемент уже на экране при загрузке
             if (el.getBoundingClientRect().top < window.innerHeight) {
-                setTimeout(() => el.classList.add('in-view'), 100);
+                setTimeout(() => el.classList.add('active'), 100);
             }
         });
     </script>
