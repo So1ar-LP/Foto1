@@ -1,224 +1,74 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анна Смирнова | Фотограф</title>
-    
-    <!-- Подключаем Tailwind CSS для быстрой и красивой верстки -->
+    <title>Алина Фетисова — Фотограф</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Подключаем шрифты Google Fonts (Inter для текста, Cormorant Garamond для заголовков) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* Базовые настройки типографики */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fafafa;
-            color: #1a1a1a;
-        }
-        
-        h1, h2, h3, .font-serif {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        /* Эффект при наведении на фотографии */
-        .photo-card {
-            overflow: hidden;
-            border-radius: 4px;
-        }
-        
-        .photo-card img {
-            transition: transform 0.7s ease, filter 0.5s ease;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.05);
-            filter: brightness(0.9);
-        }
-
-        /* Классы для анимации появления при скролле */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, visibility;
-        }
-        
-        .fade-in.appear {
-            opacity: 1;
-            transform: none;
-        }
-
-        /* CSS Grid для галереи, чтобы сделать её похожей на masonry */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1rem;
-        }
-        
-        @media (min-width: 640px) {
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        @media (min-width: 1024px) {
-            .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
-        }
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-stone-50 text-stone-800">
 
-    <header class="fixed w-full top-0 bg-[#fafafa]/90 backdrop-blur-sm z-50 border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-serif font-semibold tracking-wide">A.S.</a>
-            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-500">
-                <a href="#about" class="hover:text-black transition-colors duration-300">Обо мне</a>
-                <a href="#portfolio" class="hover:text-black transition-colors duration-300">Портфолио</a>
-                <a href="#contact" class="hover:text-black transition-colors duration-300">Контакты</a>
-            </nav>
-            <!-- Мобильное меню (гамбургер) - упрощенная версия без JS для простоты -->
-            <a href="#portfolio" class="md:hidden text-sm uppercase tracking-widest text-gray-800">Работы</a>
-        </div>
+    <!-- Шапка сайта -->
+    <header class="py-20 text-center px-4">
+        <h1 class="text-5xl md:text-7xl mb-4 text-stone-900 serif">Алина Фетисова</h1>
+        <p class="text-lg md:text-xl text-stone-500 max-w-2xl mx-auto font-light leading-relaxed">
+            Начинающий фотограф. Ищу красоту в искренних эмоциях, деталях и естественном свете. Открыта к творческим съемкам и интересным идеям.
+        </p>
     </header>
 
-    <main>
-        <section id="about" class="pt-32 pb-20 md:pt-48 md:pb-32 px-6 max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20 fade-in">
-                <!-- Аватар/Главное фото -->
-                <div class="w-full md:w-5/12">
-                    <div class="relative aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
-                        <img src="https://placehold.co/800x1000/e2e8f0/64748b?text=Portrait+Photo" alt="Анна Смирнова - Фотограф" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                
-                <!-- Текст -->
-                <div class="w-full md:w-7/12">
-                    <h1 class="text-5xl md:text-7xl mb-6 text-gray-900 font-serif leading-tight">Анна <br>Смирнова.</h1>
-                    <p class="text-lg md:text-xl text-gray-600 mb-8 font-light leading-relaxed">
-                        Привет! Я профессиональный фотограф. Специализируюсь на портретной, свадебной и lifestyle съемке. 
-                        Мой подход — ловить искренние эмоции и сохранять их в вневременных кадрах. Я верю, что в каждом человеке есть уникальная красота, и моя задача — показать её миру.
-                    </p>
-                    <a href="#contact" class="inline-block bg-gray-900 text-white px-8 py-3 rounded uppercase tracking-wider text-sm hover:bg-gray-700 transition duration-300 shadow-md">
-                        Связаться со мной
-                    </a>
-                </div>
+    <!-- Галерея -->
+    <main class="max-w-6xl mx-auto px-4 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- Фото 1 -->
+            <div class="fade-in overflow-hidden group cursor-pointer bg-stone-200 aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop" alt="Портретная съемка" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
             </div>
-        </section>
 
-        <section id="portfolio" class="py-20 px-6 max-w-6xl mx-auto border-t border-gray-200">
-            <h2 class="text-4xl text-center mb-16 font-serif fade-in">Избранные работы</h2>
-            
-            <div class="portfolio-grid">
-                <!-- Фото 1 (Вертикальное) -->
-                <div class="photo-card fade-in aspect-[3/4]">
-                    <img src="https://placehold.co/600x800/d1d5db/475569?text=Wedding+1" alt="Портфолио 1">
-                </div>
-                <!-- Фото 2 (Горизонтальное - занимает 2 колонки на десктопе, если использовать сложные grid, здесь для простоты стандартная сетка) -->
-                <div class="photo-card fade-in aspect-square md:aspect-[3/4]">
-                    <img src="https://placehold.co/800x800/cbd5e1/475569?text=Portrait+2" alt="Портфолио 2">
-                </div>
-                <!-- Фото 3 -->
-                <div class="photo-card fade-in aspect-[3/4]">
-                    <img src="https://placehold.co/600x800/94a3b8/1e293b?text=Lifestyle+3" alt="Портфолио 3">
-                </div>
-                <!-- Фото 4 -->
-                <div class="photo-card fade-in aspect-square md:aspect-[4/3]">
-                    <img src="https://placehold.co/800x600/e2e8f0/475569?text=Studio+4" alt="Портфолио 4">
-                </div>
-                <!-- Фото 5 -->
-                <div class="photo-card fade-in aspect-[3/4]">
-                    <img src="https://placehold.co/600x800/cbd5e1/475569?text=Love+Story+5" alt="Портфолио 5">
-                </div>
-                <!-- Фото 6 -->
-                <div class="photo-card fade-in aspect-square md:aspect-[4/3]">
-                    <img src="https://placehold.co/800x600/d1d5db/475569?text=Art+6" alt="Портфолио 6">
-                </div>
+            <!-- Фото 2 -->
+            <div class="fade-in overflow-hidden group cursor-pointer bg-stone-200 aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop" alt="Творческая съемка" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
             </div>
             
-            <div class="text-center mt-12 fade-in">
-                <a href="#" class="inline-block border border-gray-900 text-gray-900 px-8 py-3 rounded uppercase tracking-wider text-sm hover:bg-gray-900 hover:text-white transition duration-300">
-                    Смотреть больше в Instagram
-                </a>
+            <!-- Фото 3 -->
+            <div class="fade-in overflow-hidden group cursor-pointer bg-stone-200 aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop" alt="Фотосессия" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
             </div>
-        </section>
+
+            <!-- Чтобы добавить больше фото, просто скопируйте блок выше и вставьте сюда -->
+
+        </div>
     </main>
 
-    <footer id="contact" class="bg-gray-900 text-white py-20 px-6 text-center mt-12">
-        <div class="max-w-3xl mx-auto fade-in">
-            <h2 class="text-4xl font-serif mb-6">Давайте создадим красоту вместе</h2>
-            <p class="text-gray-400 mb-10 font-light text-lg">
-                Открыта для коммерческих предложений, свадебных съемок и творческих проектов по всему миру.
-            </p>
-            
-            <a href="mailto:hello@example.com" class="text-2xl md:text-3xl font-serif hover:text-gray-300 transition-colors block mb-12">
-                hello@example.com
-            </a>
-            
-            <div class="flex justify-center space-x-6">
-                <!-- Иконки соцсетей (SVG) -->
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                    <span class="sr-only">Instagram</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                    <span class="sr-only">Telegram</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                    <span class="sr-only">Behance</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10.871 14.195c0-1.895-1.127-2.651-2.946-2.651H3.666v6.09h4.258c1.819 0 2.947-.756 2.947-2.651l.001-.788zm-5.185-1.579h2.234c.732 0 1.267.319 1.267 1.054v.474c0 .736-.535 1.055-1.267 1.055H5.686v-2.583zm4.569-4.814c0-1.743-1.024-2.484-2.732-2.484H3.666v5.393h3.857c1.708 0 2.732-.741 2.732-2.484v-.425zm-5.034-1.393h1.802c.703 0 1.134.332 1.134 1.023v.406c0 .69-.431 1.022-1.134 1.022H5.221V6.409zm9.053 4.417c-1.309 0-2.493.593-3.155 1.637v-1.442h-1.921v8.528h2.02v-3.79c0-1.602 1.052-2.26 2.05-2.26.999 0 1.707.616 1.707 1.839v4.211h2.02v-4.664c0-2.551-1.32-4.059-2.721-4.059z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-            
-            <p class="mt-16 text-xs text-gray-600">
-                &copy; 2026 Анна Смирнова. Все права защищены.<br>
-                Дизайн и разработка специально для GitHub Pages.
-            </p>
+    <!-- Подвал сайта -->
+    <footer class="py-10 border-t border-stone-200 text-center px-4">
+        <h2 class="text-3xl mb-6 text-stone-900 serif">Связаться со мной</h2>
+        <div class="flex justify-center gap-6 mb-8">
+            <a href="mailto:email@example.com" class="text-stone-500 hover:text-stone-900 transition">email@example.com</a>
+            <a href="https://t.me/your_telegram" target="_blank" class="text-stone-500 hover:text-stone-900 transition">Telegram</a>
         </div>
+        <p class="text-sm text-stone-400">© 2026 Алина Фетисова. Все права защищены.</p>
     </footer>
 
+    <!-- Скрипт для появления фото при прокрутке -->
     <script>
-        // Инициализация скрипта после загрузки страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // Настройка Intersection Observer для эффекта плавного появления
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 // Элемент начнет появляться когда 15% его площади будет видно
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Добавляем класс appear для запуска CSS анимации
-                        entry.target.classList.add('appear');
-                        // Прекращаем наблюдение за элементом после его появления
-                        observer.unobserve(entry.target);
+                        entry.target.classList.add('visible');
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
-            // Находим все элементы с классом fade-in и начинаем за ними наблюдать
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Дополнительная логика: подсветка активного пункта меню или 
-            // скрытие меню при скролле вниз может быть добавлена здесь
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
     </script>
 </body>
