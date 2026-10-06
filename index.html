@@ -4,167 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alina Fetisova | Photographer</title>
-    
     <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Подключаем шрифты: Inter для навигации/текста, Playfair Display для заголовков -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-    
+    <!-- Подключаем элегантные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #0a0a0a; /* Глубокий журнальный черный */
-            color: #f5f5f5; 
-            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #fafafa; /* Очень мягкий белый цвет */
+            color: #1a1a1a;
         }
-        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        .serif { font-family: 'Playfair Display', serif; }
         
-        /* Стилизация полосы прокрутки */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
-        
-        .reveal { 
-            opacity: 0; 
-            transform: translateY(60px); 
-            transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1); 
+        /* Плавная анимация появления снизу вверх */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.5, 0, 0, 1);
         }
-        .reveal.active { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-        
-        /* Эффект параллакса для картинок */
-        .img-zoom:hover img {
-            transform: scale(1.03);
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-zinc-800 selection:text-white">
+<body class="antialiased">
 
-    <nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white">
-        <div class="text-xs md:text-sm tracking-[0.25em] uppercase font-light">A. Fetisova</div>
-        <div class="space-x-10 text-xs tracking-[0.25em] uppercase font-light hidden md:block">
-            <a href="#about" class="hover:opacity-70 transition duration-300">Обо мне</a>
-            <a href="#portfolio" class="hover:opacity-70 transition duration-300">Портфолио</a>
-            <a href="#contact" class="hover:opacity-70 transition duration-300">Контакты</a>
+    <!-- Навигация -->
+    <nav class="p-6 md:p-10 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-xs md:text-sm tracking-[0.2em] uppercase font-light">A. Fetisova</div>
+        <div class="space-x-8 text-xs tracking-[0.2em] uppercase font-light hidden md:block">
+            <a href="#about" class="hover:text-gray-400 transition duration-300">Обо мне</a>
+            <a href="#portfolio" class="hover:text-gray-400 transition duration-300">Портфолио</a>
+            <a href="#contact" class="hover:text-gray-400 transition duration-300">Контакты</a>
         </div>
     </nav>
 
-    <section class="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
-        <!-- Фоновое изображение (Главное фото) -->
-        <div class="absolute inset-0 z-0">
-            <!-- Темный градиент-оверлей поверх фото для читаемости текста -->
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/50 via-transparent to-[#0a0a0a] z-10"></div>
-            <img src="IMG_2400.JPG" alt="Alina Fetisova Background" class="w-full h-full object-cover object-top opacity-80" />
-        </div>
+    <!-- Главный экран (Hero) -->
+    <section class="max-w-7xl mx-auto px-4 pt-10 pb-20 text-center">
+        <!-- Заголовок -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl serif mb-6 fade-up">Алина Фетисова</h1>
+        <p class="text-xs md:text-sm tracking-[0.4em] uppercase text-gray-500 mb-12 fade-up" style="transition-delay: 200ms;">
+            Photographer
+        </p>
         
-        <!-- Заголовок поверх фото -->
-        <div class="z-20 px-4 reveal active">
-            <h1 class="text-[5rem] md:text-[10rem] lg:text-[13rem] leading-[0.85] tracking-tighter serif font-medium text-white shadow-sm">
-                ALINA<br>
-                <span class="italic font-light text-zinc-300">FETISOVA</span>
-            </h1>
-            <p class="mt-10 md:mt-12 text-xs md:text-sm tracking-[0.5em] uppercase font-light text-zinc-300">
-                Visual Artist & Photographer
-            </p>
+        <!-- Главное фото (теперь оно точно загрузится) -->
+        <div class="w-full h-[60vh] md:h-[80vh] overflow-hidden fade-up" style="transition-delay: 400ms;">
+            <img src="IMG_2400.JPG" alt="Алина Фетисова" class="w-full h-full object-cover rounded-sm">
         </div>
     </section>
 
-    <section id="about" class="py-32 md:py-48 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
-        <!-- Фотография для блока About -->
-        <div class="w-full md:w-5/12 reveal">
-            <div class="aspect-[4/5] overflow-hidden relative img-zoom">
-                <img src="IMG_2400.JPG" alt="Алина Фетисова" class="w-full h-full object-cover transition-transform duration-[2s]">
-            </div>
-        </div>
-        
-        <!-- Текстовое описание -->
-        <div class="w-full md:w-7/12 reveal" style="transition-delay: 200ms;">
-            <h2 class="text-4xl md:text-6xl mb-12 serif leading-tight">Эстетика в <br><span class="italic text-zinc-400">каждом кадре</span></h2>
-            <div class="space-y-8 text-lg text-zinc-400 font-light leading-relaxed max-w-xl">
+    <!-- Блок "Обо мне" -->
+    <section id="about" class="py-24 px-4 bg-white text-center">
+        <div class="max-w-3xl mx-auto fade-up">
+            <h2 class="text-3xl md:text-5xl serif mb-10">Ловя <span class="italic text-gray-400">искренние</span> моменты</h2>
+            <div class="text-base md:text-lg text-gray-600 font-light leading-relaxed space-y-6">
                 <p>
-                    Привет, я Алина. Я смотрю на мир через объектив и верю, что в каждом человеке и моменте кроется уникальная красота. Мой стиль — это минимализм, игра света и тени, искренние эмоции.
+                    Я смотрю на мир через объектив и верю, что в каждом человеке кроется уникальная красота. Мой стиль — это естественный свет, живые эмоции и внимание к деталям.
                 </p>
                 <p>
-                    Я создаю кадры, которые становятся вневременными. Открыта к смелым идеям и всегда нахожусь в поиске новых форм для визуального сторителлинга.
+                    Каждая съемка для меня — это отдельная история, которую мы создаем вместе. Я помогу вам раскрыться и сохраню ваши лучшие моменты в кадрах, которые захочется пересматривать годами.
                 </p>
             </div>
-            
-            <!-- Декоративная линия -->
-            <div class="w-16 h-[1px] bg-zinc-700 mt-12"></div>
         </div>
     </section>
 
-    <section id="portfolio" class="py-20 md:py-32 w-full">
-        <h2 class="text-4xl md:text-6xl mb-24 md:mb-40 serif text-center reveal px-4">Избранные <span class="italic text-zinc-500">работы</span></h2>
+    <!-- Галерея (Огромные фотографии в одну колонку) -->
+    <section id="portfolio" class="py-32 px-4 max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-5xl serif text-center mb-24 fade-up">Избранные работы</h2>
         
-        <!-- Асимметричный лейаут с большими фотографиями -->
-        <div class="flex flex-col gap-24 md:gap-40 max-w-[100rem] mx-auto px-4 md:px-12">
-            
-            <!-- Работа 1: Широкая, по центру -->
-            <div class="reveal w-full md:w-[85%] mx-auto img-zoom cursor-pointer">
-                <div class="overflow-hidden bg-zinc-900">
-                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/WHnOmEqGxfRYmMOcRhNvq.jpg" alt="Portfolio 1" class="w-full h-auto object-cover transition-transform duration-[2s]">
-                </div>
+        <div class="flex flex-col gap-20 md:gap-32">
+            <!-- Работа 1 -->
+            <div class="w-full fade-up">
+                <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/WHnOmEqGxfRYmMOcRhNvq.jpg" alt="Моя работа 1" class="w-full h-auto object-cover shadow-sm rounded-sm">
             </div>
             
-            <!-- Работа 2: Сдвинута вправо -->
-            <div class="reveal w-full md:w-[70%] ml-auto img-zoom cursor-pointer">
-                <div class="overflow-hidden bg-zinc-900">
-                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/cbAZD00mb_WcTAEMlQsDm.jpg" alt="Portfolio 2" class="w-full h-auto object-cover transition-transform duration-[2s]">
-                </div>
+            <!-- Работа 2 -->
+            <div class="w-full fade-up">
+                <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/cbAZD00mb_WcTAEMlQsDm.jpg" alt="Моя работа 2" class="w-full h-auto object-cover shadow-sm rounded-sm">
             </div>
             
-            <!-- Работа 3: Сдвинута влево -->
-            <div class="reveal w-full md:w-[75%] mr-auto img-zoom cursor-pointer">
-                <div class="overflow-hidden bg-zinc-900">
-                    <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/Hw61JH8oNwUBEUBt4JL5V.jpg" alt="Portfolio 3" class="w-full h-auto object-cover transition-transform duration-[2s]">
-                </div>
+            <!-- Работа 3 -->
+            <div class="w-full fade-up">
+                <img src="https://storage.vigbo.tech/p/s2500/gallery-photo/9e350954-696e-4cca-8c37-62260ba6691e/6dcf2c67-078b-464d-89f2-9870f5efcc98/original/Hw61JH8oNwUBEUBt4JL5V.jpg" alt="Моя работа 3" class="w-full h-auto object-cover shadow-sm rounded-sm">
             </div>
-
         </div>
     </section>
 
-    <footer id="contact" class="pt-40 pb-20 px-6 text-center mt-20 relative">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-6xl md:text-8xl lg:text-[9rem] mb-16 serif reveal leading-none">
-                Давайте <br><span class="italic text-zinc-500">творить</span>
-            </h2>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mt-20 reveal" style="transition-delay: 150ms;">
-                <a href="#" class="text-zinc-400 hover:text-white tracking-[0.3em] uppercase text-xs transition duration-300 pb-2 border-b border-transparent hover:border-white">Telegram</a>
-                <a href="#" class="text-zinc-400 hover:text-white tracking-[0.3em] uppercase text-xs transition duration-300 pb-2 border-b border-transparent hover:border-white">WhatsApp</a>
-                <a href="#" class="text-zinc-400 hover:text-white tracking-[0.3em] uppercase text-xs transition duration-300 pb-2 border-b border-transparent hover:border-white">Instagram</a>
-            </div>
-            
-            <p class="text-zinc-700 text-[10px] mt-40 tracking-[0.3em] uppercase">© 2026 Alina Fetisova. All rights reserved.</p>
+    <!-- Подвал (Контакты) -->
+    <footer id="contact" class="py-32 bg-white text-center px-4 border-t border-gray-100">
+        <h2 class="text-4xl md:text-6xl serif mb-12 fade-up">Давайте творить</h2>
+        <div class="flex justify-center gap-10 md:gap-16 fade-up" style="transition-delay: 200ms;">
+            <a href="#" class="text-xs tracking-[0.2em] uppercase hover:text-gray-400 transition duration-300">Telegram</a>
+            <a href="#" class="text-xs tracking-[0.2em] uppercase hover:text-gray-400 transition duration-300">WhatsApp</a>
         </div>
+        <p class="text-xs tracking-[0.2em] uppercase text-gray-300 mt-32">© 2026 Alina Fetisova</p>
     </footer>
 
+    <!-- Скрипт для красивого появления блоков -->
     <script>
-        // Функция для отслеживания скролла и запуска анимаций
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                // Насколько пикселей элемент должен появиться на экране для старта анимации
-                var elementVisible = 120; 
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Запускаем наблюдение за всеми блоками с классом fade-up
+            document.querySelectorAll('.fade-up').forEach(el => {
+                // Если элемент находится на первом экране при загрузке, показываем его сразу
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    setTimeout(() => el.classList.add('visible'), 100);
+                } else {
+                    observer.observe(el);
                 }
-            }
-        }
-        
-        // Слушаем событие скролла
-        window.addEventListener("scroll", reveal);
-        // Вызываем сразу при загрузке страницы
-        reveal();
+            });
+        });
     </script>
 </body>
 </html>
