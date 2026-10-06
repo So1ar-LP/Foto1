@@ -5,71 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Алина Фетисова — Фотограф</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; }
+        body { font-family: 'Helvetica Neue', sans-serif; }
         h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
 
     <!-- Шапка сайта -->
-    <header class="py-20 text-center px-4">
-        <h1 class="text-5xl md:text-7xl mb-4 text-stone-900 serif">Алина Фетисова</h1>
-        <p class="text-lg md:text-xl text-stone-500 max-w-2xl mx-auto font-light leading-relaxed">
-            Начинающий фотограф. Ищу красоту в искренних эмоциях, деталях и естественном свете. Открыта к творческим съемкам и интересным идеям.
-        </p>
+    <header class="py-16 text-center px-4">
+        <h1 class="text-5xl md:text-6xl mb-3 text-stone-900 serif">Алина Фетисова</h1>
+        <p class="text-xl text-stone-500 font-light tracking-wide">Портфолио фотографа</p>
     </header>
 
-    <!-- Галерея -->
+    <!-- Блок с фото самого фотографа -->
+    <section class="max-w-4xl mx-auto px-4 mb-20 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+        <!-- Фото Алины -->
+        <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full overflow-hidden bg-stone-200 border-4 border-white shadow-lg">
+            <img src="main/IMG_2400.jpg" alt="Фотограф Алина Фетисова" class="w-full h-full object-cover">
+        </div>
+        <!-- Текст о фотографе -->
+        <div class="text-center md:text-left max-w-lg">
+            <h2 class="text-3xl mb-4 text-stone-900 serif">Привет, я Алина!</h2>
+            <p class="text-stone-600 font-light leading-relaxed">
+                Я начинающий фотограф, и я искренне влюблена в свое дело. Моя цель — ловить настоящие, живые эмоции и сохранять ваши лучшие моменты в красивых кадрах. Я открыта к творческим съемкам и буду рада воплотить ваши идеи в жизнь.
+            </p>
+        </div>
+    </section>
+
+    <!-- Галерея работ -->
     <main class="max-w-6xl mx-auto px-4 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <h3 class="text-2xl text-center mb-10 text-stone-900 serif">Мои работы</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Работа 1 -->
+            <div class="overflow-hidden bg-stone-200 aspect-[3/4] rounded-sm">
+                <img src="images/photo1.jpg" alt="Моя работа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer">
+            </div>
+
+            <!-- Работа 2 -->
+            <div class="overflow-hidden bg-stone-200 aspect-[3/4] rounded-sm">
+                <img src="images/photo2.jpg" alt="Моя работа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer">
+            </div>
             
-            <!-- Фото 1 -->
-            <div class="fade-in overflow-hidden group cursor-pointer bg-stone-200 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop" alt="Портретная съемка" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+            <!-- Работа 3 -->
+            <div class="overflow-hidden bg-stone-200 aspect-[3/4] rounded-sm">
+                <img src="images/photo3.jpg" alt="Моя работа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer">
             </div>
-
-            <!-- Фото 2 -->
-            <div class="fade-in overflow-hidden group cursor-pointer bg-stone-200 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop" alt="Творческая съемка" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-            </div>
-            
-            <!-- Фото 3 -->
-            <div class="fade-in overflow-hidden group cursor-pointer bg-stone-200 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop" alt="Фотосессия" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-            </div>
-
-            <!-- Чтобы добавить больше фото, просто скоп.ируйтюе блок выше и вставьте сюда -->
-
         </div>
     </main>
 
-    <!-- Подвал сайта -->
+    <!-- Подвал -->
     <footer class="py-10 border-t border-stone-200 text-center px-4">
-        <h2 class="text-3xl mb-6 text-stone-900 serif">Связаться со мной</h2>
-        <div class="flex justify-center gap-6 mb-8">
-            <a href="mailto:email@example.com" class="text-stone-500 hover:text-stone-900 transition">email@example.com</a>
-            <a href="https://t.me/your_telegram" target="_blank" class="text-stone-500 hover:text-stone-900 transition">Telegram</a>
+        <h2 class="text-2xl mb-4 text-stone-900 serif">Связаться со мной</h2>
+        <div class="flex justify-center gap-6 text-stone-500">
+            <a href="#" class="hover:text-stone-900 transition">Telegram</a>
+            <a href="#" class="hover:text-stone-900 transition">WhatsApp</a>
         </div>
-        <p class="text-sm text-stone-400">© 2026 Алина Фетисова. Все права защищены.</p>
     </footer>
 
-    <!-- Скрипт для появления фото при прокрутке -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        });
-    </script>
 </body>
 </html>
