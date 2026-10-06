@@ -1,69 +1,132 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Алина Фетисова — Фотограф</title>
+    <title>Alina Fetisova | Photographer</title>
+    <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Подключаем красивые журнальные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Helvetica Neue', sans-serif; }
-        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+        /* Базовые стили */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0a0a0a; /* Глубокий темный цвет */
+            color: #f5f5f5; 
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Кастомный тонкий скроллбар */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        
+        /* Классы для плавной анимации появления */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: all 1.2s cubic-bezier(0.5, 0, 0, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800">
+<body class="antialiased selection:bg-white selection:text-black">
 
-    <!-- Шапка сайта -->
-    <header class="py-16 text-center px-4">
-        <h1 class="text-5xl md:text-6xl mb-3 text-stone-900 serif">Алина Фетисова</h1>
-        <p class="text-xl text-stone-500 font-light tracking-wide">Портфолио фотографа</p>
-    </header>
-
-    <!-- Блок с фото самого фотографа -->
-    <section class="max-w-4xl mx-auto px-4 mb-20 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-        <!-- Фото Алины -->
-        <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full overflow-hidden bg-stone-200 border-4 border-white shadow-lg">
-            <img src="IMG_2400.JPG" alt="Фотограф Алина Фетисова" class="w-full h-full object-cover">
+    <!-- Навигационное меню (фиксированное сверху) -->
+    <nav class="fixed w-full z-50 px-6 py-8 flex justify-between items-center bg-gradient-to-b from-[#0a0a0a] to-transparent">
+        <div class="text-sm tracking-[0.2em] uppercase font-light">A. Fetisova</div>
+        <div class="space-x-8 text-xs tracking-[0.2em] uppercase font-light hidden md:block">
+            <a href="#about" class="hover:text-zinc-400 transition duration-300">Обо мне</a>
+            <a href="#portfolio" class="hover:text-zinc-400 transition duration-300">Портфолио</a>
+            <a href="#contact" class="hover:text-zinc-400 transition duration-300">Контакты</a>
         </div>
-        <!-- Текст о фотографе -->
-        <div class="text-center md:text-left max-w-lg">
-            <h2 class="text-3xl mb-4 text-stone-900 serif">Привет, я Алина!</h2>
-            <p class="text-stone-600 font-light leading-relaxed">
-                Я начинающий фотограф, и я искренне влюблена в свое дело. Моя цель — ловить настоящие, живые эмоции и сохранять ваши лучшие моменты в красивых кадрах. Я открыта к творческим съемкам и буду рада воплотить ваши идеи в жизнь.
-            </p>
+    </nav>
+
+    <!-- Главный экран (Hero Section) -->
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        <h1 class="text-6xl md:text-8xl lg:text-[10rem] leading-none tracking-tighter serif mb-4 reveal">
+            Alina <br><span class="italic text-zinc-500">Fetisova</span>
+        </h1>
+        <p class="text-xs md:text-sm tracking-[0.4em] uppercase font-light text-zinc-400 mt-8 reveal" style="transition-delay: 200ms;">
+            Photographer & Visual Creator
+        </p>
+    </section>
+
+    <!-- Блок "Обо мне" -->
+    <section id="about" class="py-32 px-4 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
+        <!-- Фотография -->
+        <div class="w-full md:w-5/12 reveal">
+            <div class="aspect-[4/5] overflow-hidden relative group">
+                <!-- Путь к фото указан правильно: в корне репозитория -->
+                <img src="IMG_2400.JPG" alt="Алина Фетисова" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105">
+            </div>
+        </div>
+        <!-- Текст -->
+        <div class="w-full md:w-7/12 reveal" style="transition-delay: 200ms;">
+            <h2 class="text-4xl md:text-6xl mb-10 serif">Ловя <span class="italic text-zinc-500">момент</span></h2>
+            <div class="space-y-6 text-lg text-zinc-400 font-light leading-relaxed">
+                <p>
+                    Привет, я Алина. Я смотрю на мир через объектив и верю, что в каждом человеке кроется уникальная эстетика. Мой стиль — это минимализм, игра света и тени, искренние эмоции.
+                </p>
+                <p>
+                    Я создаю кадры, которые хочется рассматривать и печатать. Открыта к смелым идеям и всегда ищу новые формы для визуального сторителлинга.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Галерея работ -->
-    <main class="max-w-6xl mx-auto px-4 pb-20">
-        <h3 class="text-2xl text-center mb-10 text-stone-900 serif">Мои работы</h3>
+    <!-- Галерея (Асимметричная сетка) -->
+    <section id="portfolio" class="py-32 px-4 md:px-12 max-w-7xl mx-auto">
+        <h2 class="text-4xl md:text-6xl mb-20 serif text-center reveal">Избранные <span class="italic text-zinc-500">работы</span></h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             <!-- Работа 1 -->
-            <div class="overflow-hidden bg-stone-200 aspect-[3/4] rounded-sm">
-                <img src="images/photo1.jpg" alt="Моя работа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer">
+            <div class="aspect-[3/4] overflow-hidden reveal relative group cursor-pointer">
+                <img src="images/photo1.jpg" class="w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110 opacity-90 group-hover:opacity-100">
             </div>
-
-            <!-- Работа 2 -->
-            <div class="overflow-hidden bg-stone-200 aspect-[3/4] rounded-sm">
-                <img src="images/photo2.jpg" alt="Моя работа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer">
+            
+            <!-- Работа 2 (Сдвинута вниз на ПК для модной асимметрии) -->
+            <div class="aspect-[3/4] overflow-hidden reveal relative group cursor-pointer md:mt-24" style="transition-delay: 150ms;">
+                <img src="images/photo2.jpg" class="w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110 opacity-90 group-hover:opacity-100">
             </div>
             
             <!-- Работа 3 -->
-            <div class="overflow-hidden bg-stone-200 aspect-[3/4] rounded-sm">
-                <img src="images/photo3.jpg" alt="Моя работа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer">
+            <div class="aspect-[3/4] overflow-hidden reveal relative group cursor-pointer" style="transition-delay: 300ms;">
+                <img src="images/photo3.jpg" class="w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110 opacity-90 group-hover:opacity-100">
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Подвал -->
-    <footer class="py-10 border-t border-stone-200 text-center px-4">
-        <h2 class="text-2xl mb-4 text-stone-900 serif">Связаться со мной</h2>
-        <div class="flex justify-center gap-6 text-stone-500">
-            <a href="#" class="hover:text-stone-900 transition">Telegram</a>
-            <a href="#" class="hover:text-stone-900 transition">WhatsApp</a>
+    <!-- Подвал (Контакты) -->
+    <footer id="contact" class="py-40 px-4 text-center border-t border-zinc-900 mt-20">
+        <h2 class="text-5xl md:text-7xl mb-16 serif reveal">Давайте <span class="italic text-zinc-500">творить</span></h2>
+        <div class="flex justify-center gap-8 md:gap-16 reveal" style="transition-delay: 200ms;">
+            <a href="#" class="text-zinc-500 hover:text-white tracking-[0.2em] uppercase text-xs md:text-sm transition duration-300">Telegram</a>
+            <a href="#" class="text-zinc-500 hover:text-white tracking-[0.2em] uppercase text-xs md:text-sm transition duration-300">WhatsApp</a>
         </div>
+        <p class="text-zinc-700 text-xs mt-32 tracking-[0.2em] uppercase">© 2026 Alina Fetisova</p>
     </footer>
 
+    <!-- Скрипт для анимации при прокрутке -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Запуск при загрузке страницы
+    </script>
 </body>
 </html>
